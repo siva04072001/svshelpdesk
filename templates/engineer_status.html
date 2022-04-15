@@ -1,0 +1,42 @@
+{% extends 'engineerbasic.html' %} 
+{% block content %}
+<div class="col-12 d-flex justify-content-center">
+<div class="col-3 d-flex justify-content-center">
+<div class="card shadow mb-4" style="margin-right: 30px; margin-left:10px;">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Tickets</h6>
+  </div>
+  <div class="card-body">
+    <div class="container">
+        
+
+      {% if messages %} 
+      {% for message in messages %}
+      <h3 style="color: #38d39f">{{message}}</h3>
+      {% endfor %} 
+      {% endif %}
+      {% if item %}
+      <form method="POST" action="{% url 'engupdate_ticket' item.Id %}">
+        {% csrf_token %}
+            <label>status:</label>
+            <select name="status" class="form-control" value="{{item.status}}">
+                <option value="none">Choose...</option>
+                <option value="To Do">To Do</option>
+                <option value="On Progress">On Progress</option>
+                <option value="Testing">Testing</option>
+                <option value="Completed">Completed</option>
+            </select>
+          
+          
+
+          <br /><br /><br/>
+          <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock %}

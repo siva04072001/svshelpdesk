@@ -1,0 +1,54 @@
+{% extends 'adminbasic.html' %}
+{% block content %}
+<div class="col-12 d-flex justify-content-center">
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tickets</h6>
+  </div>
+  
+  <div class="card-body">
+    {% if messages %} 
+    {% for message in messages %}
+    <h3 style="color: #38d39f">{{message}}</h3>
+    {% endfor %} 
+    {% endif %}
+    
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ticket Id</th>
+            <th scope="col">Queries</th>
+            <th scope="col">Requerter</th>
+            <th scope="col">Assigned To</th>
+            <th scope="col">status</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Due Date</th>
+            
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for statuse in tickets %}
+            {% if statuse.status == "closed" %}
+          <tr>
+            <th scope="row"> {{ statuse.Id }} </th>
+            <td> {{ statuse.queries }} </td>
+            <td> {{ statuse.username }} </td>
+            <td> {{ statuse.assigned }} </td>
+            <td style="color:red;"> {{ statuse.status }} </td>
+            <td> {{ statuse.assigned_date }} </td>
+            <td> {{ statuse.due_date }} </td>
+        </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+
+</div>
+</div>
+                     
+</div>
+</div>
+
+   {% endblock %}

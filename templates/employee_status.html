@@ -1,0 +1,56 @@
+{% extends 'employeebasic.html' %}
+
+{% block content %}
+
+<div class="row">
+
+  
+    
+{% for statuse in ticket %}
+
+<div class="card shadow mb-4" style="margin-right: 30px; margin-left:60px;">
+<div class="card-header py-3">  
+      <h6 class="m-0 font-weight-bold text-primary">Tickets</h6>
+  </div>
+  <div class="card-body">
+<div class="container" >
+     <h3>status<h3>
+       
+     
+         <h6> Ticket Id: <span style="color:#38d39f;">{{ statuse.Id }}</span> </h6>
+         <h6> Username: <span style="color:#38d39f;">{{ statuse.username }}</span> </h6>
+         <h6> Queries: <span style="color:#38d39f;">{{ statuse.queries }}</span> </h6>
+         <h6> Priority: <span style="color:#38d39f;">{{ statuse.priority }}</span> </h6>
+         {% if statuse.status == 'closed' %}
+         <h6> Status: <span style="color:red;">{{ statuse.status }}</span> </h6>
+         {% endif %}
+         {% if statuse.status == 'Completed' %}
+         <h6> Status: <span style="color:blue;">{{ statuse.status }}</span> </h6>
+         {% endif %}
+         {% if statuse.status != 'closed' %}
+         
+         
+         
+         
+         {% if statuse.status != 'Completed'  %}
+         <h6> Status: <span style="color:#38d39f;">{{ statuse.status }}</span> </h6>
+         {% endif %}
+         {% endif %}
+         
+         <h6> Assigned To: <span style="color:#38d39f;">{{ statuse.assigned }}</span> </h6>
+         <h6> Assigned Date: <span style="color:#38d39f;">{{ statuse.assigned_date }}</span> </h6>
+         <h6> Due Date: <span style="color:#38d39f;">{{ statuse.due_date }}</span> </h6>
+         
+        
+     
+     </div>
+    
+    </div>
+  </div>
+
+  {% endfor %}
+                         
+
+{% endblock %}
+                                
+                 

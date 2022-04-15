@@ -1,0 +1,103 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Help Desk</title>
+  </head>
+  <body>
+  
+  <div class="content">
+    <div class="container" style="margin:50px;">
+      <div class="row justify-content-center">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center"> 
+            <div class="col-md-12">
+              <button class="btn btn-pill text-white btn-outline-primary"><a href="{% url 'superadmin' %}">back</a></button>
+              <div class="form-block" >
+                
+                  <div class="mb-4">
+                      <h1>User Update Page</h1>
+                </div>
+                  
+              {% if messages %}
+        {% for message in messages %}
+        <h3 style="color:#38d39f;"> {{message}} </h3>
+        {% endfor %}
+      {% endif %}
+                <form  method="POST" action="{% url 'update_user' item.userId %}">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6">
+                      
+                  <div class="form-group first">
+                    
+                    <h2><b style="color:#38d39f;">User ID:</b> <br>{{item.userId}}</h2>
+                  </div>
+                  <div class="form-group first">
+                    
+                    <h2><b style="color:#38d39f;">Username:</b> <br>{{item.username}}</h2>  
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group first">
+                    <h2><b style="color:#38d39f;">Mail ID:</b> <br></h2>
+                    <input type="text" class="form-control" name="email" value="{{item.email}}">
+                  </div>
+                  <div class="form-group first">
+                    <h2><b style="color:#38d39f;">Mobile No:</b> <br></h2>
+                    <input type="text" class="form-control" name="mobNo" value="{{item.mobNo}}">
+                  </div>
+                  <div class="form-group first">
+                    <h2><b style="color:#38d39f;">Address:</b> <br></h2>
+                    <input type="text" class="form-control" name="address" value="{{item.address}}">
+                  </div>
+                  <div class="form-group first">
+                    <h2><b style="color:#38d39f;">Designation:</b> <br></h2>
+                    <input type="text" class="form-control" name="designation" value="{{item.designation}}">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <!--<div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Super Admin</span>
+                        {{ form.is_superadmin }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>-->
+                  
+                    <span class="text-error">{{ form.errors }}</span>
+                  <input type="submit"  value="Update" class="btn btn-pill text-white btn-block btn-primary">
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
