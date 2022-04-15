@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
-from dj_database_url import parse as dburl
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'qwdr*&#u%=_u%5up_%--s_dns02rdg4vc14#h)6(skj!t%(wf4'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -85,8 +84,12 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-default_dburl = 'sqlite:///'+ os.path.join(BASE_DIR, 'db.sqlite3')
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl),}
+DATABASES = { 
+    'default':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    } 
+}
 
 
 # Password validation
@@ -136,3 +139,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "svshelpdesk2001@gmail.com"
 EMAIL_HOST_PASSWORD = "svs@2001"
+
+django_heroku.settings(locals())
