@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tickets.apps.TicketsConfig',
-    'whitenoise.runserver_nostatic'
     
 ]
 
@@ -132,6 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -143,4 +143,3 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "svshelpdesk2001@gmail.com"
 EMAIL_HOST_PASSWORD = "svs@2001"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
