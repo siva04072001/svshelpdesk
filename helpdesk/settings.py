@@ -26,7 +26,7 @@ SECRET_KEY = "qwdr*&#u%=_u%5up_%--s_dns02rdg4vc14#h)6(skj!t%(wf4"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['svshelpdesk.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
